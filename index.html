@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rutvi’s Magical 1st Birthday</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(120deg, #ffe0f0, #d0f0ff);
+      color: #333;
+      overflow-x: hidden;
+    }
+    nav {
+      background-color: #ff89bb;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #ff3f7a;
+    }
+
+    #home {
+      background: url('11.jpg') center top no-repeat;
+      background-size: contain;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+    }
+    #home .overlay {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 2rem 3rem;
+      border-radius: 15px;
+      text-align: center;
+    }
+    #home .overlay h1 {
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      color: #ff3f7a;
+    }
+
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      transform: rotate(45deg);
+    }
+.journey-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+  background-color: #ff3f7a;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+.journey-btn:hover {
+  background-color: #d81b60;
+}
+
+    .video-grid video {
+      width: 180px;
+      height: 320px;
+      border-radius: 12px;
+      transform: rotate(-45deg);
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+    }
+    .video-grid video:nth-child(4),
+    .video-grid video:nth-child(5) {
+      width: 320px;
+      height: 180px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .video-grid video:nth-child(1) { animation-delay: 0.3s; }
+    .video-grid video:nth-child(2) { animation-delay: 0.6s; }
+    .video-grid video:nth-child(3) { animation-delay: 0.9s; }
+    .video-grid video:nth-child(4) { animation-delay: 1.2s; }
+  
+    .photo-collage {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.5rem;
+    }
+    .photo-collage img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    #venue .timeline-container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff6fa;
+      padding: 1.5rem;
+      border-radius: 15px;
+    }
+    #venue .timeline-item {
+      border-left: 3px solid #ff89bb;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+    #venue .map-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: #6a1b9a;
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #rsvp .whatsapp-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      background-color: #ff3f7a;
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .balloons {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .balloon {
+      width: 60px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, #fff, #ffccf9);
+      border-radius: 50%;
+      position: absolute;
+      animation: float 10s infinite;
+      opacity: 0.8;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(1); }
+      50% { transform: translateY(50vh) scale(1.1); }
+      100% { transform: translateY(-100vh) scale(1); }
+    }
+
+    .footer {
+      background: #ff89bb;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    /* Circular Countdown Styles */
+    .countdown-circle-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: conic-gradient(#ff3f7a var(--angle), #eee 0deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2rem;
+      position: relative;
+    }
+
+    .circle::before {
+      content: '';
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      background: #fff;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .circle span {
+      z-index: 2;
+      color: #ff3f7a;
+      font-size: 1.3rem;
+    }
+    .circle label {
+      z-index: 2;
+      font-size: 0.8rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Balloons -->
+  <div class="balloons">
+    <div class="balloon" style="left:10%; animation-delay:0s"></div>
+    <div class="balloon" style="left:25%; animation-delay:2s"></div>
+    <div class="balloon" style="left:40%; animation-delay:4s"></div>
+    <div class="balloon" style="left:60%; animation-delay:1s"></div>
+    <div class="balloon" style="left:75%; animation-delay:3s"></div>
+    <div class="balloon" style="left:90%; animation-delay:5s"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#countdown">Countdown</a>
+    <a href="#videos">Videos</a>
+    <a href="#photos">Photos</a>
+    <a href="#venue">Venue</a>
+    <a href="#rsvp">RSVP</a>
+  </nav>
+
+  <!-- Home -->
+  <section id="home">
+    <div class="overlay">
+      <h1>🎉 Welcome to Rutvi’s 1st Birthday Celebration! 🎉</h1>
+      <p>Join us for a magical evening full of fun, joy, and love!</p>
+<a href="journey.html" class="journey-btn">👣 See Rutvi’s 1st Year Journey</a>
+
+    </div>
+  </section>
+
+  <!-- Countdown -->
+  <section id="countdown">
+    <h2 class="section-title">⏳ Countdown to the Big Day!</h2>
+    <div class="countdown-circle-container">
+      <div class="circle" id="days"><span>0</span><label>Days</label></div>
+      <div class="circle" id="hours"><span>0</span><label>Hours</label></div>
+      <div class="circle" id="minutes"><span>0</span><label>Mins</label></div>
+      <div class="circle" id="seconds"><span>0</span><label>Secs</label></div>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <section id="videos">
+    <h2 class="section-title"></h2>
+    <div class="video-grid">
+      <video autoplay muted loop src="1.mp4"></video>
+      <video autoplay muted loop src="2.mp4"></video>
+      <video autoplay muted loop src="3.mp4"></video>
+      <video autoplay muted loop src="4.mp4"></video>
+
+    </div>
+  </section>
+
+  <!-- Photos -->
+  <section id="photos">
+    <h2 class="section-title">📸 Sweet Moments</h2>
+    <div class="photo-collage">
+      <img src="11.jpg" alt="">
+      <img src="12.jpg" alt="">
+      <img src="13.jpg" alt="">
+      <img src="14.jpg" alt="">
+      <img src="15.jpg" alt="">
+      <img src="16.jpg" alt="">
+      <img src="17.jpg" alt="">
+      <img src="18.jpg" alt="">
+      <img src="19.jpg" alt="">
+    </div>
+  </section>
+
+  <!-- Venue -->
+  <section id="venue">
+    <h2 class="section-title">📍 Venue Details</h2>
+    <div class="timeline-container">
+      <div class="timeline-item"><p><strong>Date:</strong> 24th April 2025</p></div>
+      <div class="timeline-item"><p><strong>Time:</strong> 7:00 PM onwards</p></div>
+      <div class="timeline-item"><p><strong>Location:</strong> Fort Palms, Vaishali Nagar</p></div>
+      <a href="https://maps.app.goo.gl/v5wWS9MM6mFzN5ht8" target="_blank" class="map-btn">📍 View on Google Maps</a>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp">
+    <h2 class="section-title">💌 RSVP</h2>
+    <p>Please let us know if you’ll be joining us!</p>
+    <a href="https://wa.me/919509393095?text=Yes!%20We%E2%80%99re%20coming%20to%20Rutvi%E2%80%99s%20Birthday!" target="_blank" class="whatsapp-btn">Send RSVP on WhatsApp</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>With Love, Rutvi &amp; Family 💖</p>
+  </footer>
+
+  <!-- Countdown Script -->
+  <script>
+    const endDate = new Date("April 24, 2025 19:00:00").getTime();
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const dist = endDate - now;
+
+      const days = Math.floor(dist / (1000 * 60 * 60 * 24));
+      const hrs = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((dist % (1000 * 60)) / 1000);
+
+      const setCircle = (id, val, max) => {
+        const el = document.getElementById(id);
+        el.querySelector("span").textContent = val;
+        el.style.setProperty("--angle", `${(val / max) * 360}deg`);
+      };
+
+      if (dist > 0) {
+        setCircle("days", days, 365);
+        setCircle("hours", hrs, 24);
+        setCircle("minutes", mins, 60);
+        setCircle("seconds", secs, 60);
+      }
+    };
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
